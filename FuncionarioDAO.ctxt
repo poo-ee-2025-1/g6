@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=FuncionarioDAO
+comment1.params=funcionario
+comment1.target=void\ salvarFuncionario(Funcionario)
+comment2.params=
+comment2.target=java.util.List\ listarFuncionarios()
+comment3.params=cpf
+comment3.target=Funcionario\ buscarPorCpf(java.lang.String)
+comment4.params=cpf
+comment4.target=void\ removerFuncionarioPorCpf(java.lang.String)
+comment5.params=funcionarios
+comment5.target=void\ salvarLista(java.util.List)
+numComments=6

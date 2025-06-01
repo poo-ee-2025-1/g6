@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=Manutencao
+comment1.params=cliente\ descricao
+comment1.target=Manutencao(Cliente,\ java.lang.String)
+comment2.params=
+comment2.target=Cliente\ getCliente()
+comment3.params=
+comment3.target=java.lang.String\ getDescricao()
+comment4.params=
+comment4.target=java.time.LocalDate\ getDataSolicitacao()
+comment5.params=
+comment5.target=boolean\ isResolvido()
+comment6.params=resolvido
+comment6.target=void\ setResolvido(boolean)
+numComments=7
