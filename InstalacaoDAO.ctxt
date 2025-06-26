@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=InstalacaoDAO
+comment1.params=
+comment1.target=InstalacaoDAO()
+comment2.params=i
+comment2.target=void\ adicionarInstalacao(Instalacao)
+comment3.params=
+comment3.target=java.util.List\ listarInstalacoes()
+comment4.params=cliente
+comment4.target=java.util.List\ buscarPorCliente(Cliente)
+numComments=5

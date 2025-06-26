@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=Gerente
+comment1.params=nome\ cpf\ email\ telefone\ idFuncionario\ cargo\ salario\ login\ senha
+comment1.target=Gerente(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ int,\ java.lang.String,\ double,\ java.lang.String,\ java.lang.String)
+comment2.params=funcionarios\ novo
+comment2.target=void\ cadastrarFuncionario(java.util.List,\ Funcionario)
+comment3.params=funcionarios\ f
+comment3.target=void\ removerFuncionario(java.util.List,\ Funcionario)
+comment4.params=orcamento
+comment4.target=void\ aprovarOrcamento(Orcamento)
+comment5.params=orcamento
+comment5.target=void\ recusarOrcamento(Orcamento)
+comment6.params=
+comment6.target=java.lang.String\ toString()
+numComments=7
