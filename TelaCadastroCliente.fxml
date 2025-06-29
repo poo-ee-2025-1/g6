@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" spacing="15.0" style="-fx-background-color: #f4f7f6;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DashboardClienteController">
+   <children>
+      <Label fx:id="welcomeLabel" text="Bem-vindo(a), [Nome do Cliente]!" textFill="#0d47a1">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Button mnemonicParsing="false" onAction="#handleSolicitarOrcamento" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #0288d1; -fx-text-fill: white;" text="Solicitar Novo Orçamento">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button mnemonicParsing="false" onAction="#handleMeusOrcamentos" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #0288d1; -fx-text-fill: white;" text="Meus Orçamentos">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button mnemonicParsing="false" onAction="#handleAcompanharInstalacao" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #0288d1; -fx-text-fill: white;" text="Acompanhar Instalação">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button mnemonicParsing="false" onAction="#handleSolicitarManutencao" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #0288d1; -fx-text-fill: white;" text="Solicitar Manutenção">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#handleLogout" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #d32f2f;" text="Logout" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+   </children>
+   <padding>
+      <Insets top="30.0" />
+   </padding>
+</VBox>

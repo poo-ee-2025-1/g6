@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=Navigation
+comment1.params=event\ fxmlFile
+comment1.target=void\ navigateTo(javafx.event.ActionEvent,\ java.lang.String)
+comment1.text=\r\n\ M\u00E9todo\ reutiliz\u00E1vel\ para\ trocar\ a\ cena\ atual\ em\ uma\ janela.\r\n\r\n\ @param\ event\ \ \ \ O\ evento\ de\ a\u00E7\u00E3o\ (de\ um\ bot\u00E3o\ ou\ link)\ que\ disparou\ a\ mudan\u00E7a.\r\n\ @param\ fxmlFile\ O\ nome\ do\ arquivo\ FXML\ para\ o\ qual\ se\ quer\ navegar.\r\n
+numComments=2

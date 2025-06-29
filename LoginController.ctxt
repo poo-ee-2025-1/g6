@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=LoginController
+comment1.params=event
+comment1.target=void\ loginAction(javafx.event.ActionEvent)
+comment2.params=event
+comment2.target=void\ abrirTelaCadastro(javafx.event.ActionEvent)
+numComments=3

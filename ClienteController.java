@@ -13,7 +13,7 @@ public class ClienteController {
         manutencaoDAO = new ManutencaoDAO();
     }
 
-    // Cadastrar novo cliente (feito por funcionário/gerente, mas incluído aqui)
+    // Este é o método que estava faltando na sua versão do arquivo
     public void cadastrarCliente(Cliente cliente) {
         clienteDAO.adicionarCliente(cliente);
     }
@@ -21,11 +21,11 @@ public class ClienteController {
     // Solicitar novo orçamento
     public void solicitarOrcamento(Cliente cliente, Funcionario funcionarioResponsavel,
                      double valorEstimado, double energiaGerada, String localInstalacao) {
-        Orcamento novo = new Orcamento(cliente, funcionarioResponsavel, valorEstimado, energiaGerada,localInstalacao); // ainda não atribuímos um funcionário
+        Orcamento novo = new Orcamento(cliente, funcionarioResponsavel, valorEstimado, energiaGerada,localInstalacao);
         orcamentoDAO.adicionarOrcamento(novo);
     }
 
-    // Ver orçamento aprovado (cliente só vê orçamentos aprovados)
+    // Ver orçamento aprovado
     public Orcamento consultarOrcamentoAprovado(Cliente cliente) {
         for (Orcamento o : orcamentoDAO.listarOrcamentos()) {
             if (o.getCliente().getCpf().equals(cliente.getCpf()) && o.isAprovado()) {
@@ -35,7 +35,7 @@ public class ClienteController {
         return null;
     }
 
-    // Ver progresso da instalação (se houver)
+    // Ver progresso da instalação
     public Instalacao consultarProgressoInstalacao(Cliente cliente) {
         for (Instalacao i : instalacaoDAO.listarInstalacoes()) {
             if (i.getCliente().getCpf().equals(cliente.getCpf())) {

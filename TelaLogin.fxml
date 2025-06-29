@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<GridPane alignment="CENTER" hgap="10" prefHeight="400" prefWidth="600" style="-fx-background-color: #ECEFF1;" vgap="10" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginController">
+   <padding>
+      <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+   </padding>
+   <children>
+      <Text fill="#37474F" strokeType="OUTSIDE" strokeWidth="0.0" text="Acesso ao Sistema" GridPane.columnSpan="2" GridPane.halignment="CENTER">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Text>
+      <Label text="Login:" GridPane.rowIndex="1" />
+      <TextField fx:id="loginField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <Label text="Senha:" GridPane.rowIndex="2" />
+      <PasswordField fx:id="senhaField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <HBox alignment="CENTER_RIGHT" spacing="10" GridPane.columnSpan="2" GridPane.rowIndex="3">
+         <children>
+            <Button fx:id="entrarButton" onAction="#loginAction" style="-fx-background-color: #1E88E5; -fx-text-fill: white;" text="Entrar" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" spacing="5.0" GridPane.columnSpan="2" GridPane.rowIndex="4">
+         <children>
+            <Label fx:id="statusLabel" textFill="RED" />
+         </children>
+      </HBox>
+      <Hyperlink onAction="#abrirTelaCadastro" text="Não tem uma conta? Cadastre-se" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+   </children>
+</GridPane>

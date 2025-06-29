@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=DashboardClienteController
+comment1.params=cliente
+comment1.target=void\ initData(Cliente)
+comment1.text=\r\n\ Este\ m\u00E9todo\ \u00E9\ usado\ para\ passar\ os\ dados\ do\ cliente\ logado\r\n\ da\ tela\ de\ login\ para\ este\ controller.\r\n
+comment2.params=event
+comment2.target=void\ handleSolicitarOrcamento(javafx.event.ActionEvent)
+comment3.params=event
+comment3.target=void\ handleMeusOrcamentos(javafx.event.ActionEvent)
+comment4.params=event
+comment4.target=void\ handleAcompanharInstalacao(javafx.event.ActionEvent)
+comment5.params=event
+comment5.target=void\ handleSolicitarManutencao(javafx.event.ActionEvent)
+comment6.params=event
+comment6.target=void\ handleLogout(javafx.event.ActionEvent)
+numComments=7

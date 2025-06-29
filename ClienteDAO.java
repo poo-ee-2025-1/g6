@@ -8,6 +8,14 @@ public class ClienteDAO {
         clientes = new ArrayList<>();
     }
 
+public Cliente buscarPorLogin(String login) {
+    for (Cliente c : clientes) {
+        if (c.getLogin().equals(login)) {
+            return c;
+        }
+    }
+    return null; 
+}
     public void adicionarCliente(Cliente cliente) {
         clientes.add(cliente);
         // salvarClientes(); // se quiser implementar persistência
