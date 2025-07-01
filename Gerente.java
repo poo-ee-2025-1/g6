@@ -8,22 +8,34 @@ public class Gerente extends Funcionario {
         super(nome, cpf, email, telefone, idFuncionario, cargo, salario, login, senha);
     }
 
-    // Métodos de gerenciamento (só a estrutura, a lógica será em controladores ou serviços)
+    // ... métodos de gerenciar funcionário ...
 
-    public void cadastrarFuncionario(List<Funcionario> funcionarios, Funcionario novo) {
-        funcionarios.add(novo);
-    }
+    /**
+     * MÉTODO ATUALIZADO: Agora, além de aprovar, este método CRIA a instalação.
+     * @param orcamento O orçamento a ser aprovado.
+     * @param instalacaoDAO O DAO onde a nova instalação será salva.
+     */
+    public void aprovarOrcamento(Orcamento orcamento, InstalacaoDAO instalacaoDAO) {
+        if (orcamento == null || orcamento.isAprovado()) {
+            return; // Não faz nada se o orçamento não existe ou já foi aprovado
+        }
+        
+        orcamento.setStatus("Aprovado");
 
-    public void removerFuncionario(List<Funcionario> funcionarios, Funcionario f) {
-        funcionarios.remove(f);
-    }
-
-    public void aprovarOrcamento(Orcamento orcamento) {
-        orcamento.setAprovado(true);
+        // Cria uma nova instalação baseada nos dados do orçamento aprovado
+        Instalacao novaInstalacao = new Instalacao(
+            orcamento.getCliente(),
+            orcamento,
+            orcamento.getFuncionarioResponsavel(), // Pode ser nulo por enquanto
+            orcamento.getLocalInstalacao()
+        );
+        
+        // Salva a nova instalação na lista central do DAO
+        instalacaoDAO.adicionarInstalacao(novaInstalacao);
     }
 
     public void recusarOrcamento(Orcamento orcamento) {
-        orcamento.setAprovado(false);
+        orcamento.setStatus("Recusado");
     }
 
     @Override

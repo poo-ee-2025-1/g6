@@ -13,27 +13,29 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Button mnemonicParsing="false" onAction="#handleSolicitarOrcamento" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #0288d1; -fx-text-fill: white;" text="Solicitar Novo Orçamento">
+      <Button onAction="#handleSolicitarOrcamento" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #0288d1; -fx-text-fill: white;" text="Solicitar Novo Orçamento">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <Button mnemonicParsing="false" onAction="#handleMeusOrcamentos" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #0288d1; -fx-text-fill: white;" text="Meus Orçamentos">
+      
+      <Button onAction="#handleMeusOrcamentos" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #0288d1; -fx-text-fill: white;" text="Meus Orçamentos">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <Button mnemonicParsing="false" onAction="#handleAcompanharInstalacao" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #0288d1; -fx-text-fill: white;" text="Acompanhar Instalação">
+      
+      <Button onAction="#handleAcompanharInstalacao" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #0288d1; -fx-text-fill: white;" text="Acompanhar Instalação">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <Button mnemonicParsing="false" onAction="#handleSolicitarManutencao" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #0288d1; -fx-text-fill: white;" text="Solicitar Manutenção">
+      <Button onAction="#handleSolicitarManutencao" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #0288d1; -fx-text-fill: white;" text="Solicitar Manutenção">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#handleLogout" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #d32f2f;" text="Logout" textFill="WHITE">
+      <Button fx:id="logoutButton" onAction="#handleLogout" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #d32f2f;" text="Logout" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>

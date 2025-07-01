@@ -3,25 +3,54 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FuncionarioDAO {
-    private final String arquivo = "funcionarios.ser";
+    // 1. A única instância da classe
+    private static FuncionarioDAO instance = null;
+    
+    // Lista em memória para simplificar, em vez de usar arquivos
+    private List<Funcionario> funcionarios;
 
-    public void salvarFuncionario(Funcionario funcionario) {
-        List<Funcionario> funcionarios = listarFuncionarios();
+    // 2. Construtor privado
+    private FuncionarioDAO() {
+        funcionarios = new ArrayList<>();
+        // Adiciona um gerente padrão para que o login 'admin' possa ser associado a um objeto
+        funcionarios.add(new Gerente("Admin", "000.000.000-00", "admin@email.com", "0000-0000", 1, "Gerente", 10000, "admin", "admin"));
+    }
+
+    // 3. Método público para obter a instância
+    public static FuncionarioDAO getInstance() {
+        if (instance == null) {
+            instance = new FuncionarioDAO();
+        }
+        return instance;
+    }
+
+    public void adicionarFuncionario(Funcionario funcionario) {
+        // Verifica se já existe um funcionário com o mesmo CPF
+        for (Funcionario f : funcionarios) {
+            if (f.getCpf().equals(funcionario.getCpf())) {
+                System.out.println("Erro: Já existe um funcionário com este CPF.");
+                return; // Impede a adição
+            }
+        }
         funcionarios.add(funcionario);
-        salvarLista(funcionarios);
     }
 
     public List<Funcionario> listarFuncionarios() {
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(arquivo))) {
-            return (List<Funcionario>) ois.readObject();
-        } catch (IOException | ClassNotFoundException e) {
-            return new ArrayList<>();
-        }
+        return new ArrayList<>(funcionarios); // Retorna uma cópia para proteger a lista original
     }
 
     public Funcionario buscarPorCpf(String cpf) {
-        for (Funcionario f : listarFuncionarios()) {
+        for (Funcionario f : funcionarios) {
             if (f.getCpf().equals(cpf)) {
+                return f;
+            }
+        }
+        return null;
+    }
+    
+    public Funcionario buscarPorLogin(String login) {
+        for (Funcionario f : funcionarios) {
+            if (f.getLogin().equals(login)) {
                 return f;
             }
         }
@@ -29,16 +58,6 @@ public class FuncionarioDAO {
     }
 
     public void removerFuncionarioPorCpf(String cpf) {
-        List<Funcionario> funcionarios = listarFuncionarios();
         funcionarios.removeIf(f -> f.getCpf().equals(cpf));
-        salvarLista(funcionarios);
-    }
-
-    private void salvarLista(List<Funcionario> funcionarios) {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(arquivo))) {
-            oos.writeObject(funcionarios);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }
