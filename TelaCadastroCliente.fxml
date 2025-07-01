@@ -3,43 +3,54 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" spacing="15.0" style="-fx-background-color: #f4f7f6;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DashboardClienteController">
-   <children>
-      <Label fx:id="welcomeLabel" text="Bem-vindo(a), [Nome do Cliente]!" textFill="#0d47a1">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Label>
-      <Button mnemonicParsing="false" onAction="#handleSolicitarOrcamento" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #0288d1; -fx-text-fill: white;" text="Solicitar Novo Orçamento">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Button>
-      <Button mnemonicParsing="false" onAction="#handleMeusOrcamentos" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #0288d1; -fx-text-fill: white;" text="Meus Orçamentos">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Button>
-      <Button mnemonicParsing="false" onAction="#handleAcompanharInstalacao" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #0288d1; -fx-text-fill: white;" text="Acompanhar Instalação">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Button>
-      <Button mnemonicParsing="false" onAction="#handleSolicitarManutencao" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #0288d1; -fx-text-fill: white;" text="Solicitar Manutenção">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Button>
-      <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#handleLogout" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #d32f2f;" text="Logout" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Button>
-   </children>
+<GridPane hgap="10" vgap="15" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CadastroClienteController">
    <padding>
-      <Insets top="30.0" />
+      <Insets bottom="20" left="20" right="20" top="20" />
    </padding>
-</VBox>
+   
+   <children>
+      <Text text="Cadastro de Cliente" GridPane.columnSpan="2">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Text>
+      
+      <Label text="Nome:" GridPane.rowIndex="1" />
+      <TextField fx:id="nomeField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      
+      <Label text="CPF:" GridPane.rowIndex="2" />
+      <TextField fx:id="cpfField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      
+      <Label text="Email:" GridPane.rowIndex="3" />
+      <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      
+      <Label text="Telefone:" GridPane.rowIndex="4" />
+      <TextField fx:id="telefoneField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      
+      <Label text="Endereço:" GridPane.rowIndex="5" />
+      <TextField fx:id="enderecoField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+      
+      <Label text="Login:" GridPane.rowIndex="6" />
+      <TextField fx:id="loginField" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+      
+      <Label text="Senha:" GridPane.rowIndex="7" />
+      <PasswordField fx:id="senhaField" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+      
+      <Label text="Energia Desejada:" GridPane.rowIndex="8" />
+      <TextField fx:id="energiaField" promptText="kWh/mês" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+      
+      <HBox alignment="CENTER_RIGHT" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="9">
+         <children>
+            <Button onAction="#voltarAction" text="Voltar" />
+            <Button onAction="#cadastrarAction" text="Cadastrar" />
+         </children>
+      </HBox>
+   </children>
+</GridPane>

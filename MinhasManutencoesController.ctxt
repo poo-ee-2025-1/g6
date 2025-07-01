@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=MinhasManutencoesController
+comment1.params=
+comment1.target=void\ initialize()
+comment2.params=item\ empty
+comment2.target=void\ updateItem(java.lang.Boolean,\ boolean)
+comment3.params=funcionario
+comment3.target=void\ initData(Funcionario)
+comment4.params=event
+comment4.target=void\ handleVoltar(javafx.event.ActionEvent)
+numComments=5
