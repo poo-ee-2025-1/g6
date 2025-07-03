@@ -1,4 +1,6 @@
 import java.util.List;
+import java.time.LocalDate;
+
 
 public class Gerente extends Funcionario {
 
@@ -16,22 +18,24 @@ public class Gerente extends Funcionario {
      * @param instalacaoDAO O DAO onde a nova instalação será salva.
      */
     public void aprovarOrcamento(Orcamento orcamento, InstalacaoDAO instalacaoDAO) {
-        if (orcamento == null || orcamento.isAprovado()) {
+        if (orcamento == null || "Aprovado".equals(orcamento.getStatus())) {
             return; // Não faz nada se o orçamento não existe ou já foi aprovado
         }
         
         orcamento.setStatus("Aprovado");
 
         // Cria uma nova instalação baseada nos dados do orçamento aprovado
-        Instalacao novaInstalacao = new Instalacao(
-            orcamento.getCliente(),
-            orcamento,
-            orcamento.getFuncionarioResponsavel(), // Pode ser nulo por enquanto
-            orcamento.getLocalInstalacao()
+        Instalacao novaInstalacao = new Instalacao();
+        novaInstalacao.setCpfCliente(orcamento.getCpfCliente());
+        novaInstalacao.setIdOrcamento(orcamento.getId());
+        novaInstalacao.setCpfFuncionario(
+        orcamento.getFuncionarioResponsavel() != null ? orcamento.getFuncionarioResponsavel().getCpf() : null
         );
-        
+        novaInstalacao.setEndereco(orcamento.getLocalInstalacao());
+        novaInstalacao.setDataInicio(LocalDate.now());
+        novaInstalacao.setStatus(StatusInstalacao.INSTALACAO_EM_ANDAMENTO);
         // Salva a nova instalação na lista central do DAO
-        instalacaoDAO.adicionarInstalacao(novaInstalacao);
+        instalacaoDAO.inserir(novaInstalacao);
     }
 
     public void recusarOrcamento(Orcamento orcamento) {
