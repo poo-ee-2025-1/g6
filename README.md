@@ -112,5 +112,3 @@ Foi iniciada a implementação de um sistema de persistência de dados para mant
 | Integração com banco de dados          | ⚠ Em andamento |
 
 ---
-
-## 7. Estrutura do Repositório
