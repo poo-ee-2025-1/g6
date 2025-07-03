@@ -1,63 +1,138 @@
-import java.io.*;
-import java.util.ArrayList;
+import java.sql.*;
+import java.time.LocalDate;
 import java.util.List;
+import java.util.ArrayList;
 
 public class FuncionarioDAO {
-    // 1. A única instância da classe
-    private static FuncionarioDAO instance = null;
-    
-    // Lista em memória para simplificar, em vez de usar arquivos
-    private List<Funcionario> funcionarios;
+    private static FuncionarioDAO instance;
+    public boolean inserir(Funcionario funcionario) {
+        String sql = "INSERT INTO funcionario (cpf, nome, email, telefone, id_funcionario, cargo, salario, login, senha) " +
+                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-    // 2. Construtor privado
-    private FuncionarioDAO() {
-        funcionarios = new ArrayList<>();
-        // Adiciona um gerente padrão para que o login 'admin' possa ser associado a um objeto
-        funcionarios.add(new Gerente("Admin", "000.000.000-00", "admin@email.com", "0000-0000", 1, "Gerente", 10000, "admin", "admin"));
+        try (Connection conn = Conexao.conectar();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, funcionario.getCpf());
+            stmt.setString(2, funcionario.getNome());
+            stmt.setString(3, funcionario.getEmail());
+            stmt.setString(4, funcionario.getTelefone());
+            stmt.setInt(5, funcionario.getIdFuncionario());
+            stmt.setString(6, funcionario.getCargo());
+            stmt.setDouble(7, funcionario.getSalario());
+            stmt.setString(8, funcionario.getLogin());
+            stmt.setString(9, funcionario.getSenha());
+
+            stmt.executeUpdate();
+            return true;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
-
-    // 3. Método público para obter a instância
     public static FuncionarioDAO getInstance() {
-        if (instance == null) {
-            instance = new FuncionarioDAO();
-        }
-        return instance;
+    if (instance == null) {
+        instance = new FuncionarioDAO();
     }
-
-    public void adicionarFuncionario(Funcionario funcionario) {
-        // Verifica se já existe um funcionário com o mesmo CPF
-        for (Funcionario f : funcionarios) {
-            if (f.getCpf().equals(funcionario.getCpf())) {
-                System.out.println("Erro: Já existe um funcionário com este CPF.");
-                return; // Impede a adição
-            }
-        }
-        funcionarios.add(funcionario);
+    return instance;
     }
-
+    public FuncionarioDAO() {
+    }
     public List<Funcionario> listarFuncionarios() {
-        return new ArrayList<>(funcionarios); // Retorna uma cópia para proteger a lista original
+    List<Funcionario> lista = new ArrayList<>();
+    String sql = "SELECT * FROM funcionario";
+
+    try (Connection conn = Conexao.conectar();
+         PreparedStatement stmt = conn.prepareStatement(sql);
+         ResultSet rs = stmt.executeQuery()) {
+
+        while (rs.next()) {
+            Funcionario f = new Funcionario(
+                rs.getString("nome"),
+                rs.getString("cpf"),
+                rs.getString("email"),
+                rs.getString("telefone"),
+                rs.getInt("id_funcionario"),
+                rs.getString("cargo"),
+                rs.getDouble("salario"),
+                rs.getString("login"),
+                rs.getString("senha")
+            );
+            lista.add(f);
+        }
+
+    } catch (SQLException e) {
+        e.printStackTrace();
     }
 
+    return lista;
+    }
     public Funcionario buscarPorCpf(String cpf) {
-        for (Funcionario f : funcionarios) {
-            if (f.getCpf().equals(cpf)) {
-                return f;
-            }
+    String sql = "SELECT * FROM funcionario WHERE cpf = ?";
+
+    try (Connection conn = Conexao.conectar();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+        stmt.setString(1, cpf);
+        ResultSet rs = stmt.executeQuery();
+
+        if (rs.next()) {
+            return new Funcionario(
+                rs.getString("nome"),
+                rs.getString("cpf"),
+                rs.getString("email"),
+                rs.getString("telefone"),
+                rs.getInt("id_funcionario"),
+                rs.getString("cargo"),
+                rs.getDouble("salario"),
+                rs.getString("login"),
+                rs.getString("senha")
+            );
         }
-        return null;
-    }
-    
-    public Funcionario buscarPorLogin(String login) {
-        for (Funcionario f : funcionarios) {
-            if (f.getLogin().equals(login)) {
-                return f;
-            }
-        }
-        return null;
+
+    } catch (SQLException e) {
+        e.printStackTrace();
     }
 
-    public void removerFuncionarioPorCpf(String cpf) {
-        funcionarios.removeIf(f -> f.getCpf().equals(cpf));
+    return null; // Não encontrado
+    }
+    public boolean adicionarFuncionario(Funcionario funcionario) {
+    String sql = "INSERT INTO funcionario (cpf, nome, email, telefone, id_funcionario, cargo, salario, login, senha) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+    try (Connection conn = Conexao.conectar();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+        stmt.setString(1, funcionario.getCpf());
+        stmt.setString(2, funcionario.getNome());
+        stmt.setString(3, funcionario.getEmail());
+        stmt.setString(4, funcionario.getTelefone());
+        stmt.setInt(5, funcionario.getIdFuncionario());
+        stmt.setString(6, funcionario.getCargo());
+        stmt.setDouble(7, funcionario.getSalario());
+        stmt.setString(8, funcionario.getLogin());
+        stmt.setString(9, funcionario.getSenha());
+
+        stmt.executeUpdate();
+        return true;
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return false;
+    }
+    }
+    public boolean removerFuncionarioPorCpf(String cpf) {
+    String sql = "DELETE FROM funcionario WHERE cpf = ?";
+
+    try (Connection conn = Conexao.conectar();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+        stmt.setString(1, cpf);
+        int linhasAfetadas = stmt.executeUpdate();
+        return linhasAfetadas > 0;
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return false;
+    }
     }
 }

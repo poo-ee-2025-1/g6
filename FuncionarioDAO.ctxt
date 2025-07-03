@@ -1,17 +1,17 @@
 #BlueJ class context
 comment0.target=FuncionarioDAO
-comment1.params=
-comment1.target=FuncionarioDAO()
+comment1.params=funcionario
+comment1.target=boolean\ inserir(Funcionario)
 comment2.params=
 comment2.target=FuncionarioDAO\ getInstance()
-comment3.params=funcionario
-comment3.target=void\ adicionarFuncionario(Funcionario)
+comment3.params=
+comment3.target=FuncionarioDAO()
 comment4.params=
 comment4.target=java.util.List\ listarFuncionarios()
 comment5.params=cpf
 comment5.target=Funcionario\ buscarPorCpf(java.lang.String)
-comment6.params=login
-comment6.target=Funcionario\ buscarPorLogin(java.lang.String)
+comment6.params=funcionario
+comment6.target=boolean\ adicionarFuncionario(Funcionario)
 comment7.params=cpf
-comment7.target=void\ removerFuncionarioPorCpf(java.lang.String)
+comment7.target=boolean\ removerFuncionarioPorCpf(java.lang.String)
 numComments=8

@@ -1,51 +1,73 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.*;
 
 public class ClienteDAO {
-    // 1. Cria uma única instância estática e privada da própria classe.
-    private static ClienteDAO instance = null;
-    
-    private List<Cliente> clientes;
+    private static ClienteDAO instance;
+    public boolean inserir(Cliente cliente) {
+        String sql = "INSERT INTO cliente (cpf, nome, email, telefone, endereco, login, senha, energia_desejada) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
-    // 2. O construtor se torna privado. Nenhuma outra classe pode criar um "new ClienteDAO()" diretamente.
-    private ClienteDAO() {
-        clientes = new ArrayList<>();
+        try (Connection conn = Conexao.conectar();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, cliente.getCpf());
+            stmt.setString(2, cliente.getNome());
+            stmt.setString(3, cliente.getEmail());
+            stmt.setString(4, cliente.getTelefone());
+            stmt.setString(5, cliente.getEndereco());
+            stmt.setString(6, cliente.getLogin());
+            stmt.setString(7, cliente.getSenha());
+            stmt.setDouble(8, cliente.getEnergiaDesejada());
+
+            stmt.executeUpdate();
+            return true;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
+    public Cliente buscarPorLogin(String login) {
+        String sql = "SELECT * FROM cliente WHERE login = ?";
 
-    // 3. Este é o método público que todos usarão para obter a única instância.
+        try (Connection conn = Conexao.conectar();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, login);
+
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                Cliente cliente = new Cliente();
+                cliente.setCpf(rs.getString("cpf"));
+                cliente.setNome(rs.getString("nome"));
+                cliente.setEmail(rs.getString("email"));
+                cliente.setTelefone(rs.getString("telefone"));
+                cliente.setEndereco(rs.getString("endereco"));
+                cliente.setLogin(rs.getString("login"));
+                cliente.setSenha(rs.getString("senha"));
+                cliente.setEnergiaDesejada(rs.getDouble("energia_desejada"));
+                return cliente;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null; // Cliente não encontrado
+    }
+    private ClienteDAO() {
+        // Construtor privado evita criação direta fora da classe
+    }
     public static ClienteDAO getInstance() {
-        // Se a instância ainda não foi criada, cria ela.
         if (instance == null) {
             instance = new ClienteDAO();
         }
-        // Retorna a instância única.
         return instance;
     }
-
-    public void adicionarCliente(Cliente cliente) {
-        clientes.add(cliente);
-    }
-
-    public List<Cliente> listarClientes() {
-        return clientes;
-    }
-    
-    // Adiciona o método buscarPorLogin que estava faltando na versão anterior
-    public Cliente buscarPorLogin(String login) {
-        for (Cliente c : clientes) {
-            if (c.getLogin().equals(login)) {
-                return c;
-            }
-        }
-        return null;
-    }
-
-    public Cliente buscarPorCpf(String cpf) {
-        for (Cliente c : clientes) {
-            if (c.getCpf().equals(cpf)) {
-                return c;
-            }
-        }
-        return null;
+    public boolean adicionarCliente(Cliente cliente) {
+    return inserir(cliente); // se o método inserir já existe
     }
 }
+
+
+
+    

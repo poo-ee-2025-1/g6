@@ -46,11 +46,7 @@ public class GerenciarOrcamentosController {
                     {
                         btnAprovar.setOnAction((ActionEvent event) -> {
                             Orcamento orcamento = getTableView().getItems().get(getIndex());
-                            
-                            // **** CORREÇÃO PRINCIPAL AQUI ****
-                            // Chama o método atualizado, passando o InstalacaoDAO
                             gerente.aprovarOrcamento(orcamento, instalacaoDAO);
-                            
                             orcamentosTable.refresh();
                         });
                         btnRecusar.setOnAction((ActionEvent event) -> {

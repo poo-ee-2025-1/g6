@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.stage.Stage;
 
+
 import java.io.IOException;
 import java.util.List;
 
@@ -44,8 +45,8 @@ public class AcompanharInstalacaoController {
             statusLabel.setText(instalacao.getStatus().toString());
             enderecoLabel.setText(instalacao.getEndereco());
             
-            if (instalacao.getResponsavel() != null) {
-                responsavelLabel.setText(instalacao.getResponsavel().getNome());
+            if (instalacao.getFuncionarioResponsavel() != null) {
+                responsavelLabel.setText(instalacao.getFuncionarioResponsavel().getNome());
             } else {
                 responsavelLabel.setText("Ainda não definido");
             }
@@ -67,7 +68,6 @@ public class AcompanharInstalacaoController {
             progressBar.setProgress(0.0);
         }
     }
-
     private void atualizarBarraDeProgresso(StatusInstalacao status) {
         if (status == null) {
             progressBar.setProgress(0.0);
@@ -91,7 +91,6 @@ public class AcompanharInstalacaoController {
                 break;
         }
     }
-
     @FXML
     void handleVoltar(ActionEvent event) {
         try {
@@ -109,4 +108,22 @@ public class AcompanharInstalacaoController {
             e.printStackTrace();
         }
     }
+    private void atualizarBarraDeProgresso(String status) {
+    double progresso;
+    switch (status) {
+        case "Pendente":
+            progresso = 0.0;
+            break;
+        case "Em Andamento":
+            progresso = 0.5;
+            break;
+        case "Concluído":
+            progresso = 1.0;
+            break;
+        default:
+            progresso = 0.0;
+    }
+    progressBar.setProgress(progresso); // progressoBar é seu ProgressBar do FXML
+    }
+
 }

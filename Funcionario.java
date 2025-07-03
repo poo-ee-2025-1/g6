@@ -4,6 +4,10 @@ public class Funcionario extends Pessoa {
     private double salario;
     private String login;
     private String senha;
+    
+    public Funcionario() {
+    super(); // chama o construtor vazio da classe Pessoa
+    }
 
     public Funcionario(String nome, String cpf, String email, String telefone,
                        int idFuncionario, String cargo, double salario,

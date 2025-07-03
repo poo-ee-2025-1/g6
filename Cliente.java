@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cliente extends Pessoa {
+public class Cliente extends Pessoa { 
     private String endereco;
     private String login;
     private String senha;
@@ -9,6 +9,14 @@ public class Cliente extends Pessoa {
     private List<Orcamento> orcamentos;
     private List<Instalacao> instalacoes;
 
+    // Construtor vazio para uso em DAO
+    public Cliente() {
+        super(); // chama o construtor vazio da classe Pessoa
+        this.orcamentos = new ArrayList<>();
+        this.instalacoes = new ArrayList<>();
+    }
+
+    // Construtor completo
     public Cliente(String nome, String cpf, String email, String telefone, 
                    String endereco, String login, String senha, double energiaDesejada) {
         super(nome, cpf, email, telefone);

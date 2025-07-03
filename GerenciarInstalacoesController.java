@@ -78,7 +78,7 @@ public class GerenciarInstalacoesController {
                                 if (newVal instanceof StatusInstalacao) {
                                     instalacao.setStatus((StatusInstalacao) newVal);
                                 } else if (newVal instanceof Funcionario) {
-                                    instalacao.setResponsavel((Funcionario) newVal);
+                                    instalacao.setFuncionarioResponsavel((Funcionario) newVal);
                                 }
                                 instalacoesTable.refresh();
                             }
