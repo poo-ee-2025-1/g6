@@ -1,6 +1,5 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -8,7 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
+import javafx.fxml.FXMLLoader;
 import java.io.IOException;
 
 public class LoginController {
@@ -18,8 +17,8 @@ public class LoginController {
     @FXML private Button entrarButton;
     @FXML private Label statusLabel;
 
-    private ClienteDAO clienteDAO = new ClienteDAO();
-
+    private ClienteDAO clienteDAO = ClienteDAO.getInstance();
+    private FuncionarioDAO funcionarioDAO = FuncionarioDAO.getInstance();
 
     @FXML
     protected void loginAction(ActionEvent event) {
@@ -30,42 +29,70 @@ public class LoginController {
             statusLabel.setText("Por favor, preencha todos os campos.");
             return;
         }
-        
-        // Lógica de autenticação
-        Cliente cliente = clienteDAO.buscarPorLogin(login);
-        
-        if (cliente != null && cliente.getSenha().equals(senha)) {
-            // Login bem-sucedido
-            statusLabel.setText("Login realizado com sucesso!");
-            // AQUI, no futuro, abriremos a tela de Dashboard do cliente.
-            // Por enquanto, apenas exibimos a mensagem.
 
+        Funcionario funcionario = funcionarioDAO.buscarPorLogin(login);
+        if (funcionario != null && funcionario.getSenha().equals(senha)) {
+            statusLabel.setText("Login de funcionário bem-sucedido!");
+            
+            if (funcionario instanceof Gerente) {
+                Navigation.navigateTo(event, "DashboardGerente.fxml", "Painel Administrativo");
+            } else {
+                navegarParaDashboardFuncionario(event, funcionario);
+            }
+            return; 
+        }
+
+        Cliente cliente = clienteDAO.buscarPorLogin(login);
+        if (cliente != null && cliente.getSenha().equals(senha)) {
+            statusLabel.setText("Login de cliente bem-sucedido!");
+            navegarParaDashboardCliente(event, cliente);
         } else {
-            // Falha no login
             statusLabel.setText("Login ou senha inválidos.");
         }
     }
 
-    @FXML
-    protected void abrirTelaCadastro(ActionEvent event) {
+    private void navegarParaDashboardCliente(ActionEvent event, Cliente cliente) {
         try {
-            // Carrega o FXML da tela de cadastro
-            Parent root = FXMLLoader.load(getClass().getResource("TelaCadastroCliente.fxml"));
-            
-            // Pega o "palco" (janela) atual a partir do botão que foi clicado
-            Stage stage = (Stage) entrarButton.getScene().getWindow();
-            
-            // Cria uma nova cena com a tela de cadastro
-            Scene scene = new Scene(root);
-            
-            // Define a nova cena na janela
-            stage.setScene(scene);
-            stage.setTitle("Cadastro de Cliente");
-            stage.show();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("DashboardCliente.fxml"));
+            Parent root = loader.load();
+            DashboardClienteController controller = loader.getController();
+            controller.initData(cliente);
 
+            Stage stage = (Stage) entrarButton.getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle("Painel do Cliente");
+            stage.show();
         } catch (IOException e) {
             e.printStackTrace();
-            statusLabel.setText("Erro ao abrir a tela de cadastro.");
+            statusLabel.setText("Erro ao carregar o painel do cliente.");
         }
+    }
+    
+    private void navegarParaDashboardFuncionario(ActionEvent event, Funcionario funcionario) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("DashboardFuncionario.fxml"));
+            Parent root = loader.load();
+            DashboardFuncionarioController controller = loader.getController();
+            controller.initData(funcionario);
+
+            Stage stage = (Stage) entrarButton.getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle("Painel do Funcionário");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            statusLabel.setText("Erro ao carregar o painel do funcionário.");
+        }
+    }
+
+    /**
+     * MÉTODO CORRIGIDO
+     */
+    @FXML
+    protected void abrirTelaCadastro(ActionEvent event) {
+        // CORREÇÃO: O nome do arquivo foi ajustado para "TelaCadastroCliente.fxml"
+        Navigation.navigateTo(event, "TelaCadastroCliente.fxml", "Cadastro de Cliente");
     }
 }
