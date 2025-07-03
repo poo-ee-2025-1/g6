@@ -1,8 +1,3 @@
-Com certeza\! Para garantir que a formatação do seu `README.md` seja exibida exatamente como você deseja no GitHub, sem que a plataforma altere o layout, a melhor maneira é usar um bloco de código Markdown.
-
-Aqui está o conteúdo do seu `README.md` dentro de um bloco de código. Basta copiar e colar todo o conteúdo abaixo no seu arquivo `README.md` no GitHub:
-
-```markdown
 # Sistema de Gerenciamento de Energia Solar ☀️⚡
 
 ## 🎯 OBJETIVO DO PROJETO:
