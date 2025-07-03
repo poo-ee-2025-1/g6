@@ -92,7 +92,7 @@ O sistema foi modelado com base em princípios de orientação a objetos, utiliz
 - Centralização de etapas, equipamentos, notas fiscais e suporte em torno da entidade Projeto.
 - Padrão Singleton nos DAOs para consistência na manipulação de dados.
 
-📎 *Diagrama de Classes disponível em:* [diagrama_classes.pdf](.[/diagrama_classes.pdf](https://github.com/poo-ee-2025-1/g6/blob/5026537439f775d389d16a0a3cab94e545696b8d/dLVDRXen4BuZyGuMFNIJbgYveYZg2cY457u4IQzes3NKbTUErbukRL-cZz5hNgpsUd_6PadQv1AO-JmpttZysNnM6d9TPBpVw_VUlxD_PCn1AQf8AibSffIJQ2eqIo6bweAKa7uFTahda6YIM31PKQKaa1_z7Y538cH6HsIZSoOEpf8yxNq3pO1ntwGfftifl9KVo87gXGaNNVXcLPbnAWC.pdf))
+📎 *Diagrama de Classes disponível em:* [diagrama_classes.pdf](.[/diagrama_classes.pdf](https://github.com/poo-ee-2025-1/g6/blob/main/dLVDRXen4BuZyGuMFNIJbgYveYZg2cY457u4IQzes3NKbTUErbukRL-cZz5hNgpsUd_6PadQv1AO-JmpttZysNnM6d9TPBpVw_VUlxD_PCn1AQf8AibSffIJQ2eqIo6bweAKa7uFTahda6YIM31PKQKaa1_z7Y538cH6HsIZSoOEpf8yxNq3pO1ntwGfftifl9KVo87gXGaNNVXcLPbnAWC.pdf))
 
 ---
 
