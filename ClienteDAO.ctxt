@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=ClienteDAO
+comment1.params=
+comment1.target=ClienteDAO()
+comment2.params=
+comment2.target=ClienteDAO\ getInstance()
+comment3.params=cliente
+comment3.target=void\ adicionarCliente(Cliente)
+comment4.params=
+comment4.target=java.util.List\ listarClientes()
+comment5.params=login
+comment5.target=Cliente\ buscarPorLogin(java.lang.String)
+comment6.params=cpf
+comment6.target=Cliente\ buscarPorCpf(java.lang.String)
+numComments=7

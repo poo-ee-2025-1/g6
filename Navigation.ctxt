@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=Navigation
+comment1.params=event\ fxmlFile\ title
+comment1.target=void\ navigateTo(javafx.event.Event,\ java.lang.String,\ java.lang.String)
+comment1.text=\r\n\ M\u00E9todo\ de\ navega\u00E7\u00E3o\ gen\u00E9rico\ que\ funciona\ com\ qualquer\ tipo\ de\ evento.\r\n\ @param\ event\ O\ evento\ que\ disparou\ a\ navega\u00E7\u00E3o\ (pode\ ser\ ActionEvent,\ MouseEvent,\ etc.).\r\n\ @param\ fxmlFile\ O\ nome\ do\ arquivo\ FXML\ para\ o\ qual\ navegar.\r\n\ @param\ title\ O\ t\u00EDtulo\ da\ nova\ janela.\r\n
+numComments=2

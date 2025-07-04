@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=Gerente
+comment1.params=nome\ cpf\ email\ telefone\ idFuncionario\ cargo\ salario\ login\ senha
+comment1.target=Gerente(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ int,\ java.lang.String,\ double,\ java.lang.String,\ java.lang.String)
+comment2.params=orcamento\ instalacaoDAO
+comment2.target=void\ aprovarOrcamento(Orcamento,\ InstalacaoDAO)
+comment2.text=\r\n\ M\u00C9TODO\ ATUALIZADO\:\ Agora,\ al\u00E9m\ de\ aprovar,\ este\ m\u00E9todo\ CRIA\ a\ instala\u00E7\u00E3o.\r\n\ @param\ orcamento\ O\ or\u00E7amento\ a\ ser\ aprovado.\r\n\ @param\ instalacaoDAO\ O\ DAO\ onde\ a\ nova\ instala\u00E7\u00E3o\ ser\u00E1\ salva.\r\n
+comment3.params=orcamento
+comment3.target=void\ recusarOrcamento(Orcamento)
+comment4.params=
+comment4.target=java.lang.String\ toString()
+numComments=5
