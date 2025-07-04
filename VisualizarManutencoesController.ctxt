@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=VisualizarManutencoesController
+comment1.params=
+comment1.target=void\ initialize()
+comment2.params=item\ empty
+comment2.target=void\ updateItem(Funcionario,\ boolean)
+comment3.params=item\ empty
+comment3.target=void\ updateItem(java.lang.Boolean,\ boolean)
+comment4.params=param
+comment4.target=javafx.scene.control.TableCell\ call(javafx.scene.control.TableColumn)
+comment5.params=object
+comment5.target=java.lang.String\ toString(java.lang.Object)
+comment6.params=string
+comment6.target=java.lang.Object\ fromString(java.lang.String)
+comment7.params=item\ empty
+comment7.target=void\ updateItem(java.lang.Void,\ boolean)
+comment8.params=
+comment8.target=void\ carregarManutencoes()
+comment9.params=event
+comment9.target=void\ handleVoltar(javafx.event.ActionEvent)
+numComments=10
