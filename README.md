@@ -111,3 +111,6 @@ Os relatórios revelam que o desenvolvimento foi guiado por casos de uso prátic
     * Criar e enviar orçamentos para clientes.
     * Aprovar ou recusar orçamentos (caso de uso de Gerente).
     * Acompanhar e atualizar o status de instalações em andamento.
+
+[Diagrama de Classes](https://drive.google.com/file/d/1KEP00rJFiRNyeluT70uO3k11zlQk7xmI/view?usp=sharing)
+[Dicionario de dados BD](https://drive.google.com/file/d/1GJAdpJPa68oC6HEvX7_Px6oUo8rIAJil/view?usp=sharing)
