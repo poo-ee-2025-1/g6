@@ -1,7 +1,6 @@
 # Relatório de Produção Individual – Projeto de Programação Orientada a Objetos
 
 **Nome:** Vinicius Silva Machado  
-**Turma:** [Inserir turma]  
 **Grupo:** Projeto de Sistema para Instalação de Placas Solares
 
 ---
